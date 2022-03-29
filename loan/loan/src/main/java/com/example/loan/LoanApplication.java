@@ -15,7 +15,7 @@ public class LoanApplication {
                 con.close();
          } 
          catch (Exception ex) {
-                ex.printStackTrace();
+                ex.printStackTrace(); 
          }
     }
 }
