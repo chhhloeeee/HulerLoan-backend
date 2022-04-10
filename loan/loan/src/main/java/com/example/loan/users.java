@@ -10,18 +10,18 @@ public class users {
     private Integer userID;
     private String name;
     private String password;
-    private String isAdmin;
+    private String admin;
     private String email;
     private String address;
 
     public users() {
     }
 
-    public users(Integer userID, String name, String password, String isAdmin, String email, String address) {
+    public users(Integer userID, String name, String password, String admin, String email, String address) {
         this.userID = userID;
         this.name = name;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.admin = admin;
         this.email = email;
         this.address = address;
     }
@@ -52,12 +52,12 @@ public class users {
         this.password = password;
     }
 
-    public String getIsAdmin() {
-        return isAdmin;
+    public String getAdmin() {
+        return admin;
     }
 
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 
     public String getEmail() {
