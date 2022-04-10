@@ -10,14 +10,14 @@ public class users {
     private Integer userID;
     private String name;
     private String password;
-    private String admin;
+    private Boolean admin;
     private String email;
     private String address;
 
     public users() {
     }
 
-    public users(Integer userID, String name, String password, String admin, String email, String address) {
+    public users(Integer userID, String name, String password, Boolean admin, String email, String address) {
         this.userID = userID;
         this.name = name;
         this.password = password;
@@ -52,11 +52,11 @@ public class users {
         this.password = password;
     }
 
-    public String getAdmin() {
+    public Boolean getAdmin() {
         return admin;
     }
 
-    public void setAdmin(String admin) {
+    public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
 
