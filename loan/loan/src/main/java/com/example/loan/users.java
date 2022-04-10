@@ -1,8 +1,6 @@
 package com.example.loan;
 
 import javax.persistence.Entity;
-
-//import javax.persistence.Entity; //Claims to be unused
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,71 +10,70 @@ public class users {
     private Integer userID;
     private String name;
     private String password;
-    private Boolean isAdmin;
+    private String isAdmin;
     private String email;
     private String address;
 
-    public users(){
+    public users() {
     }
-/* 
-    public users(Integer userID, String name, String password, Boolean isAdmin, String email, String address){
+
+    public users(Integer userID, String name, String password, String isAdmin, String email, String address) {
         this.userID = userID;
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin;
         this.email = email;
         this.address = address;
-    } */ //Unsure if this is needed 
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setId(Integer userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Boolean getIsAdin(){
+    public String getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(Boolean isAdmin){
+    public void setIsAdmin(String isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getAddress(){
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address){
+    public void setAddress(String address) {
         this.address = address;
     }
-}
 
- 
+}

@@ -14,12 +14,12 @@ public class userService {
     @Autowired
     private userRepository repo;
 
-    public List<users>listAll() {
+    public List<users> listAll() {
         return repo.findAll();
     }
 
-    public void save(users user){
-        repo.save(user);
+    public void save(users users){
+        repo.save(users);
     }
 
     public users get(Integer userID){
