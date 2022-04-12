@@ -40,9 +40,10 @@ public class userController {
     }   
     
     @PutMapping("users/{userID}")
-    public ResponseEntity<?> update(@RequestBody users users, @PathVariable Integer userID){
+    public ResponseEntity<?> update(@RequestBody users users,
+            @PathVariable Integer userID){
         try {
-            users existusers = service.get(userID);
+            users existUsers = service.get(userID);
             service.save(users);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e){
@@ -53,5 +54,5 @@ public class userController {
     @DeleteMapping("/users/{userID}")
     public void delete(@PathVariable Integer userID) {
         service.delete(userID);
-    }
+}
 }
