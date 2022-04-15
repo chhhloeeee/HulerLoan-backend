@@ -1,6 +1,5 @@
 package com.example.loan.controller;
 
-
 import com.example.loan.model.User;
 import com.example.loan.service.UserService;
 
@@ -21,46 +20,46 @@ import java.util.Map;
 
 @CrossOrigin(value = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class UserController {
 
-    private final UserService userService;
 
-    public UserController(UserService userService) {
+    private UserService userService;
+
+    public UserController(UserService userService){
         this.userService = userService;
     }
-
+    
     @PostMapping("/users")
-    public User saveUser(@RequestBody User user) {
+    public User saveUser(@RequestBody User user){
         return userService.saveUser(user);
     }
 
     @GetMapping("/users")
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/users/{userID}")
-    public ResponseEntity<User> getUserById(@PathVariable("userID") Integer userID) {
+    public ResponseEntity<User> getUserById(@PathVariable("userID") Integer userID){
         User user = null;
-        user = userService.getUserById(userID);
-        return ResponseEntity.ok(user);
+        user = equipmentService.getEquipmentById(equipmentID);
+        return ResponseEntity.ok(equipment);
     }
 
-    @DeleteMapping("/users/{userID}")
-    public ResponseEntity<Map<String,Boolean>> deleteUser(@PathVariable("userID") Integer userID) {
+    @DeleteMapping("/equipment/{equipmentID}")
+    public ResponseEntity<Map<String, Boolean>> deleteEquipment(@PathVariable("equipmentID") Integer equipmentID){
         boolean deleted = false;
-        deleted =userService.deleteUser(userID);
-        Map<String,Boolean> response = new HashMap<>();
+        deleted = equipmentService.deletedEquipment(equipmentID);
+        Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/users/{userID}")
-    public ResponseEntity<User> updateUser(@PathVariable("userID") Integer userID,
-                                           @RequestBody User user) {
-        user = userService.updateUser(userID,user);
-        return ResponseEntity.ok(user);
+    @PutMapping("/equipement/{equipmentID}")
+    public ResponseEntity<Equipment> updateEquipment(@PathVariable("equipmentID") Integer equipmentID,
+                                                    @RequestBody Equipment equipment){
+        equipment = equipmentService.updateEquipment(equipmentID, equipment);
+        return ResponseEntity.ok(equipment);
     }
-
 }
