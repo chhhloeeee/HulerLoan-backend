@@ -17,7 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+
+@RestController(value = "http://localhost:3000")
 @RequestMapping("/api/v1")
 public class LoanController {
 
