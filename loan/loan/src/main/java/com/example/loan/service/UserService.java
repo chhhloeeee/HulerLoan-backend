@@ -11,7 +11,7 @@ public interface UserService {
 
     User getUserById(Integer userID);
 
-    boolean deleteUser(Integer userID);
-
     User updateUser(Integer userID, User user);
+
+    boolean deletedUser(Integer userID);
 }

@@ -4,7 +4,6 @@ import com.example.loan.model.User;
 import com.example.loan.service.UserService;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(value = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -43,23 +41,23 @@ public class UserController {
     @GetMapping("/users/{userID}")
     public ResponseEntity<User> getUserById(@PathVariable("userID") Integer userID){
         User user = null;
-        user = equipmentService.getEquipmentById(equipmentID);
-        return ResponseEntity.ok(equipment);
+        user = userService.getUserById(userID);
+        return ResponseEntity.ok(user);
     }
 
-    @DeleteMapping("/equipment/{equipmentID}")
-    public ResponseEntity<Map<String, Boolean>> deleteEquipment(@PathVariable("equipmentID") Integer equipmentID){
+    @DeleteMapping("/user/{userID}")
+    public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable("userID") Integer userID){
         boolean deleted = false;
-        deleted = equipmentService.deletedEquipment(equipmentID);
+        deleted = userService.deletedUser(userID);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/equipement/{equipmentID}")
-    public ResponseEntity<Equipment> updateEquipment(@PathVariable("equipmentID") Integer equipmentID,
-                                                    @RequestBody Equipment equipment){
-        equipment = equipmentService.updateEquipment(equipmentID, equipment);
-        return ResponseEntity.ok(equipment);
+    @PutMapping("/user/{userID}")
+    public ResponseEntity<User> updateUser(@PathVariable("userID") Integer userID,
+                                                    @RequestBody User user){
+        user = userService.updateUser(userID, user);
+        return ResponseEntity.ok(user);
     }
 }
