@@ -58,7 +58,7 @@ public class LoanServiceImpl implements LoanService{
     }
 
     @Override
-    public boolean deleteLoan(Integer loanID) {
+    public boolean deletedLoan(Integer loanID) {
         LoanEntity loan =  loanRepository.findById(loanID).get();
         loanRepository.delete(loan);
         return true;
