@@ -4,7 +4,6 @@ import com.example.loan.model.Specs;
 import com.example.loan.service.SpecsService;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(value = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1")
 public class SpecsController {
