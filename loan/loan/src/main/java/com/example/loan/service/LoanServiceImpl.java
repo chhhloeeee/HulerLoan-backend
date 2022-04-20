@@ -38,10 +38,10 @@ public class LoanServiceImpl implements LoanService {
                     loanEntity.getLoanID(),
                     loanEntity.getUserID(),
                     loanEntity.getCategoryID(),
-                    loanEntity.getActive(),
-                    loanEntity.getDaysElapsed(),
                     loanEntity.getIssueDate(),
-                    loanEntity.getReturnDate()
+                    loanEntity.getReturnDate(),
+                    loanEntity.getDaysElapsed(),
+                    loanEntity.getActive()
                 ))
                 .collect(Collectors.toList());
         return loan;
