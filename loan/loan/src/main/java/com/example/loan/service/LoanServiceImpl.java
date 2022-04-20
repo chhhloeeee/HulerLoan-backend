@@ -1,84 +1,82 @@
 package com.example.loan.service;
 
+import com.example.loan.entity.LoanEntity;
+import com.example.loan.model.Loan;
+import com.example.loan.repository.LoanRepository;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.loan.entity.LoanEntity;
-import com.example.loan.model.Loan;
-import com.example.loan.repository.LoanRepository;
-
 @Service
-public class LoanServiceImpl implements LoanService{
+public class LoanServiceImpl implements LoanService {
 
     private LoanRepository loanRepository;
 
-    public LoanServiceImpl(LoanRepository loanRepository) {
+    public LoanServiceImpl(LoanRepository loanRepository){
         this.loanRepository = loanRepository;
     }
 
     @Override
     public Loan saveLoan(Loan loan) {
         LoanEntity loanEntity = new LoanEntity();
-        BeanUtils.copyProperties(loan , loanEntity);
+        BeanUtils.copyProperties(loan, loanEntity);
         loanRepository.save(loanEntity);
         return loan;
     }
 
     @Override
-    public List<Loan> getAllLoans() {
+    public List<Loan> getAllLoan(){
         List<LoanEntity> loanEntities
-                = loanRepository.findAll();
+            = loanRepository.findAll();
 
-        List<Loan> loan = loanEntities
+            List<Loan> loan = loanEntities
                 .stream()
                 .map(loanEntity -> new Loan(
-                        loanEntity.getLoanID(),
-                        loanEntity.getUserId(),
-                        loanEntity.getCategoryId(),
-                        loanEntity.getIssueDate(),
-                        loanEntity.getReturnDate(),
-                        loanEntity.getDaysElapsed(),
-                        loanEntity.getActive()
+                    loanEntity.getLoanID(),
+                    loanEntity.getUserID(),
+                    loanEntity.getCategoryID(),
+                    loanEntity.getActive(),
+                    loanEntity.getDaysElapsed(),
+                    loanEntity.getIssueDate(),
+                    loanEntity.getReturnDate()
                 ))
                 .collect(Collectors.toList());
-
         return loan;
     }
 
     @Override
     public Loan getLoanById(Integer loanID) {
         LoanEntity loanEntity
-                = loanRepository.findById(loanID).get();
-        Loan loan = new Loan();
-        BeanUtils.copyProperties(loanEntity, loan);
+            = loanRepository.findById(loanID).get();
+            Loan loan = new Loan();
+            BeanUtils.copyProperties(loanEntity, loan);
         return loan;
     }
 
     @Override
     public boolean deletedLoan(Integer loanID) {
-        LoanEntity loan =  loanRepository.findById(loanID).get();
+        LoanEntity loan = loanRepository.findById(loanID).get();
         loanRepository.delete(loan);
         return true;
     }
 
     @Override
     public Loan updateLoan(Integer loanID, Loan loan) {
-        LoanEntity loanEntity =
+        LoanEntity loanEntity = 
                 loanRepository.findById(loanID).get();
-        loanEntity.setUserId(loan.getUserID());
-        loanEntity.setCategoryId(loan.getCategoryID());
+        loanEntity.setUserID(loan.getUserID());
+        loanEntity.setCategoryID(loan.getCategoryID());
+        loanEntity.setActive(loan.getActive());
+        loanEntity.setDaysElapsed(loan.getDaysElapsed());
         loanEntity.setIssueDate(loan.getIssueDate());
         loanEntity.setReturnDate(loan.getReturnDate());
-        loanEntity.setDaysElapsed(loan.getDaysElapsed());
-        loanEntity.setActive(loan.getActive());
 
-        loanRepository.save( loanEntity);
+        loanRepository.save(loanEntity);
         return loan;
     }
-
+    
 }
-
 

@@ -35,8 +35,8 @@ public class LoanController {
     }
 
     @GetMapping("/loan")
-    public List<Loan> getAllLoans(){
-        return loanService.getAllLoans();
+    public List<Loan> getAllLoan(){
+        return loanService.getAllLoan();
     }
 
     @GetMapping("/loan/{loanID}")

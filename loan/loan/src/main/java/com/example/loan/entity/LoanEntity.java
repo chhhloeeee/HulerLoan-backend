@@ -44,19 +44,19 @@ public class LoanEntity {
         this.loanID = loanID;
     }
 
-    public Integer getUserId() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setUserId(Integer userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
-    public Integer getCategoryId() {
+    public Integer getCategoryID() {
         return categoryID;
     }
 
-    public void setCategoryId(Integer categoryID) {
+    public void setCategoryID(Integer categoryID) {
         this.categoryID = categoryID;
     }
 

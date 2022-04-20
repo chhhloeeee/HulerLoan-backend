@@ -1,17 +1,18 @@
 package com.example.loan.service;
 
-import java.util.List;
-
 import com.example.loan.model.Loan;
+
+import java.util.List;
 
 public interface LoanService {
     Loan saveLoan(Loan loan);
 
-    List<Loan> getAllLoans();
+    List<Loan> getAllLoan();
 
     Loan getLoanById(Integer loanID);
 
-    Loan updateLoan(Integer loanID, Loan loan);
-
     boolean deletedLoan(Integer loanID);
+
+    Loan updateLoan(Integer loanID, Loan loan);
+    
 }
