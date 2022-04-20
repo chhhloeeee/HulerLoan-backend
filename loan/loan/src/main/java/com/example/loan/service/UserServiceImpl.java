@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
         List<User> users = userEntities
                 .stream()
                 .map(userEntity -> new User(
-                        userEntity.getId(),
+                        userEntity.getUserID(),
                         userEntity.getName(),
                         userEntity.getPassword(),
                         userEntity.getAdmin(),

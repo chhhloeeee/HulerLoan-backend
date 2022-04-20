@@ -35,7 +35,7 @@ public class LoanServiceImpl implements LoanService{
         List<Loan> loan = loanEntities
                 .stream()
                 .map(loanEntity -> new Loan(
-                        loanEntity.getId(),
+                        loanEntity.getLoanID(),
                         loanEntity.getUserId(),
                         loanEntity.getCategoryId(),
                         loanEntity.getIssueDate(),

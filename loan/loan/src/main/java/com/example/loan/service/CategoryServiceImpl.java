@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService{
         List<Category> category = categoryEntities
                 .stream()
                 .map(categoryEntity -> new Category(
-                        categoryEntity.getId(),
+                        categoryEntity.getCategoryID(),
                         categoryEntity.getName()
                 ))
                 .collect(Collectors.toList());

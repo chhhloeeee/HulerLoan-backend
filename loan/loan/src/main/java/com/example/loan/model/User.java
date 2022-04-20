@@ -7,11 +7,11 @@ public class User {
     private Boolean admin;
     private String email;
 
-    public Integer getId() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setId(Integer userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 

@@ -23,11 +23,11 @@ public class SpecsEntity {
     public SpecsEntity() {
     }
 
-    public Integer getId() {
+    public Integer getSpecsID() {
         return specsID;
     }
 
-    public void setId(Integer specsID) {
+    public void setSpecsID(Integer specsID) {
         this.specsID = specsID;
     }
 

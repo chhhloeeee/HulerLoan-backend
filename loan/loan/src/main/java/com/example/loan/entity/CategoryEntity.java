@@ -23,11 +23,11 @@ public class CategoryEntity {
     public CategoryEntity() {
     }
 
-    public Integer getId() {
+    public Integer getCategoryID() {
         return categoryID;
     }
 
-    public void setId(Integer categoryID) {
+    public void setCategoryID(Integer categoryID) {
         this.categoryID = categoryID;
     }
 

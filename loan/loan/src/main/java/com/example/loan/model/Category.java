@@ -4,11 +4,11 @@ public class Category {
     private Integer categoryID;
     private String name;
 
-    public Integer getId() {
+    public Integer getCategoryID() {
         return categoryID;
     }
 
-    public void setId(Integer categoryID) {
+    public void setCategoryID(Integer categoryID) {
         this.categoryID = categoryID;
     }
 

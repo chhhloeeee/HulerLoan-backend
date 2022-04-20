@@ -36,11 +36,11 @@ public class LoanEntity {
     public LoanEntity() {
     }
 
-    public Integer getId() {
+    public Integer getLoanID() {
         return loanID;
     }
 
-    public void setId(Integer loanID) {
+    public void setLoanID(Integer loanID) {
         this.loanID = loanID;
     }
 

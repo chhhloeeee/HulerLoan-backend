@@ -4,11 +4,11 @@ public class Specs {
     private Integer specsID;
     private String description;
 
-    public Integer getId() {
+    public Integer getSpecsID() {
         return specsID;
     }
 
-    public void setId(Integer specsID) {
+    public void setSpecsID(Integer specsID) {
         this.specsID = specsID;
     }
 

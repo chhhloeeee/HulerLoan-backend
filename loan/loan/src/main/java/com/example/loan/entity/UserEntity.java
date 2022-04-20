@@ -29,11 +29,11 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public Integer getId() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setId(Integer userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
