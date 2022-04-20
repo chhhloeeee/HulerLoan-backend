@@ -68,15 +68,15 @@ public class Loan {
     }
 
  
-    public Loan(Integer loanID, Integer userID, Integer categoryID, Date issueDate, Date returnDate,
-            Integer daysElapsed, Boolean active) {
+    public Loan(Integer loanID, Integer userID, Integer categoryID, Boolean boolean1, Integer integer,
+            Date date, Date date2) {
         this.loanID = loanID;
         this.userID = userID;
         this.categoryID = categoryID;
-        this.issueDate = issueDate;
-        this.returnDate = returnDate;
-        this.daysElapsed = daysElapsed;
-        this.active = active;
+        this.issueDate = boolean1;
+        this.returnDate = integer;
+        this.daysElapsed = date;
+        this.active = date2;
     }
 
     public Loan() {
