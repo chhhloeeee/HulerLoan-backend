@@ -56,7 +56,7 @@ public class SpecsController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("specs/{specsID}")
+    @PutMapping("/specs/{specsID}")
     public ResponseEntity<Specs> updateSpecs(@PathVariable("specsID") Integer specsID,
                                                     @RequestBody Specs specs){
         specs = specsService.updateSpecs(specsID, specs);
