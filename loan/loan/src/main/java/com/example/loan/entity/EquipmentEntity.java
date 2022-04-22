@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,12 +19,24 @@ public class EquipmentEntity {
     private Integer categoryID;
     private Integer specsID;
     private Integer availability;
-    
+    @OneToOne()
+        @JoinColumn(name="categoryID")
+        
+    private CategoryEntity category;
+
+    public CategoryEntity getCategory(){
+        return this.category;
+    }
+    public String getCategoryName(){
+        return this.category.getName();
+    }
+
     public EquipmentEntity(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability) {
         this.equipmentID = equipmentID;
         this.categoryID = categoryID;
         this.specsID = specsID;
         this.availability = availability;
+    
     }
     public EquipmentEntity() {
     }
