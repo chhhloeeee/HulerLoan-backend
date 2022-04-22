@@ -6,12 +6,20 @@ public class Equipment {
     private Integer categoryID;
     private Integer specsID;
     private Integer availability;
+    private String categoryName;
 
-    public Equipment(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability) {
+    public Equipment(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability, String categoryName) {
         this.equipmentID = equipmentID;
         this.categoryID = categoryID;
         this.specsID = specsID;
         this.availability = availability;
+        this.categoryName = categoryName;
+    }
+    public String getCategoryName() {
+        return categoryName;
+    }
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Integer getEquipmentID() {

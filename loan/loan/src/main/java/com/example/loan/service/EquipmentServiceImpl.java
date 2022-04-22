@@ -38,7 +38,8 @@ public class EquipmentServiceImpl implements EquipmentService {
                     equipmentEntity.getEquipmentID(),
                     equipmentEntity.getCategoryID(),
                     equipmentEntity.getSpecsID(),
-                    equipmentEntity.getAvailability()
+                    equipmentEntity.getAvailability(),
+                    equipmentEntity.getCategoryName()
                 ))
                 .collect(Collectors.toList());
         return equipment;
