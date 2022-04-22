@@ -20,7 +20,8 @@ public class EquipmentEntity {
     private Integer specsID;
     private Integer availability;
     @OneToOne()
-        @JoinColumn(name="categoryID")
+        @JoinColumn(name="categoryID", referencedColumnName = "categoryID", insertable = false, updatable = false)
+        
         
     private CategoryEntity category;
 
