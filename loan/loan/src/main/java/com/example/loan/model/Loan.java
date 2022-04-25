@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Loan {
     private Integer loanID;
     private Integer userID;
-    private Integer categoryID;
+    private Integer equipmentID;
     private Date issueDate;
     private Date returnDate;
     private Integer daysElapsed;
@@ -27,12 +27,12 @@ public class Loan {
         this.userID = userID;
     }
 
-    public Integer getCategoryID() {
-        return categoryID;
+    public Integer getEquipmentID() {
+        return equipmentID;
     }
 
-    public void setCategoryID(Integer categoryID) {
-        this.categoryID = categoryID;
+    public void setEquipmentID(Integer equipmentID) {
+        this.equipmentID = equipmentID;
     }
 
     public Date getIssueDate() {
@@ -67,12 +67,11 @@ public class Loan {
         this.active = active;
     }
 
- 
-    public Loan(Integer loanID, Integer userID, Integer categoryID, Date issueDate, Date returnDate,
+    public Loan(Integer loanID, Integer userID, Integer equipmentID, Date issueDate, Date returnDate,
             Integer daysElapsed, Boolean active) {
         this.loanID = loanID;
         this.userID = userID;
-        this.categoryID = categoryID;
+        this.equipmentID = equipmentID;
         this.issueDate = issueDate;
         this.returnDate = returnDate;
         this.daysElapsed = daysElapsed;

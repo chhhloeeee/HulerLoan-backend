@@ -15,7 +15,7 @@ public class LoanServiceImpl implements LoanService {
 
     private LoanRepository loanRepository;
 
-    public LoanServiceImpl(LoanRepository loanRepository){
+    public LoanServiceImpl(LoanRepository loanRepository) {
         this.loanRepository = loanRepository;
     }
 
@@ -28,31 +28,28 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public List<Loan> getAllLoan(){
-        List<LoanEntity> loanEntities
-            = loanRepository.findAll();
+    public List<Loan> getAllLoan() {
+        List<LoanEntity> loanEntities = loanRepository.findAll();
 
-            List<Loan> loan = loanEntities
+        List<Loan> loan = loanEntities
                 .stream()
                 .map(loanEntity -> new Loan(
-                    loanEntity.getLoanID(),
-                    loanEntity.getUserID(),
-                    loanEntity.getCategoryID(),
-                    loanEntity.getIssueDate(),
-                    loanEntity.getReturnDate(),
-                    loanEntity.getDaysElapsed(),
-                    loanEntity.getActive()
-                ))
+                        loanEntity.getLoanID(),
+                        loanEntity.getUserID(),
+                        loanEntity.getEquipmentID(),
+                        loanEntity.getIssueDate(),
+                        loanEntity.getReturnDate(),
+                        loanEntity.getDaysElapsed(),
+                        loanEntity.getActive()))
                 .collect(Collectors.toList());
         return loan;
     }
 
     @Override
     public Loan getLoanById(Integer loanID) {
-        LoanEntity loanEntity
-            = loanRepository.findById(loanID).get();
-            Loan loan = new Loan();
-            BeanUtils.copyProperties(loanEntity, loan);
+        LoanEntity loanEntity = loanRepository.findById(loanID).get();
+        Loan loan = new Loan();
+        BeanUtils.copyProperties(loanEntity, loan);
         return loan;
     }
 
@@ -65,10 +62,9 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public Loan updateLoan(Integer loanID, Loan loan) {
-        LoanEntity loanEntity = 
-                loanRepository.findById(loanID).get();
+        LoanEntity loanEntity = loanRepository.findById(loanID).get();
         loanEntity.setUserID(loan.getUserID());
-        loanEntity.setCategoryID(loan.getCategoryID());
+        loanEntity.setEquipmentID(loan.getEquipmentID());
         loanEntity.setActive(loan.getActive());
         loanEntity.setDaysElapsed(loan.getDaysElapsed());
         loanEntity.setIssueDate(loan.getIssueDate());
@@ -77,6 +73,5 @@ public class LoanServiceImpl implements LoanService {
         loanRepository.save(loanEntity);
         return loan;
     }
-    
-}
 
+}
