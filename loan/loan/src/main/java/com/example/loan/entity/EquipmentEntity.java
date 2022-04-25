@@ -19,16 +19,23 @@ public class EquipmentEntity {
     private Integer specsID;
     private Integer availability;
     @OneToOne()
-        @JoinColumn(name="categoryID", referencedColumnName = "categoryID", insertable = false, updatable = false)
-        
-        
+        @JoinColumn(name="categoryID", referencedColumnName = "categoryID", insertable = false, updatable = false)   
     private CategoryEntity category;
+    @OneToOne()
+        @JoinColumn(name="specsID", referencedColumnName = "specsID", insertable = false, updatable = false)
+        private SpecsEntity specs;
 
     public CategoryEntity getCategory(){
         return this.category;
     }
     public String getCategoryName(){
         return this.category.getName();
+    }
+    public SpecsEntity getSpecs(){
+        return this.specs;
+    }
+    public String getSpecsDescription(){
+        return this.specs.getDescription();
     }
 
     public EquipmentEntity(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability) {

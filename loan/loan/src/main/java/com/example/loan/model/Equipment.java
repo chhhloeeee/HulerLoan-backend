@@ -7,19 +7,28 @@ public class Equipment {
     private Integer specsID;
     private Integer availability;
     private String categoryName;
+    private String specsDescription;
 
-    public Equipment(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability, String categoryName) {
+    public Equipment(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability, String categoryName, String specsDescription) {
         this.equipmentID = equipmentID;
         this.categoryID = categoryID;
         this.specsID = specsID;
         this.availability = availability;
         this.categoryName = categoryName;
+        this.specsDescription = specsDescription;
     }
     public String getCategoryName() {
         return categoryName;
     }
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public String getSpecsDescription() {
+        return specsDescription;
+    }
+    public void setSpecsDescription(String specsDescription) {
+        this.specsDescription = specsDescription;
     }
 
     public Integer getEquipmentID() {
