@@ -12,7 +12,8 @@ public class Specs {
     public void setSpecsID(Integer specsID) {
         this.specsID = specsID;
     }
-      public Integer getCategoryID() {
+
+    public Integer getCategoryID() {
         return categoryID;
     }
 
@@ -28,8 +29,9 @@ public class Specs {
         this.description = description;
     }
 
-    public Specs(Integer specsID, String description) {
+    public Specs(Integer specsID, Integer categoryID, String description) {
         this.specsID = specsID;
+        this.categoryID = categoryID;
         this.description = description;
     }
 
