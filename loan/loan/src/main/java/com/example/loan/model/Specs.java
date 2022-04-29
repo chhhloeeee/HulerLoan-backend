@@ -2,6 +2,7 @@ package com.example.loan.model;
 
 public class Specs {
     private Integer specsID;
+    private Integer categoryID;
     private String description;
 
     public Integer getSpecsID() {
@@ -10,6 +11,13 @@ public class Specs {
 
     public void setSpecsID(Integer specsID) {
         this.specsID = specsID;
+    }
+      public Integer getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(Integer categoryID) {
+        this.categoryID = categoryID;
     }
 
     public String getDescription() {
