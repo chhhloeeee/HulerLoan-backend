@@ -11,7 +11,7 @@ import com.example.loan.model.Specs;
 import com.example.loan.repository.SpecsRepository;
 
 @Service
-public class SpecsServiceImpl implements SpecsService{
+public class SpecsServiceImpl implements SpecsService {
 
     private SpecsRepository specsRepository;
 
@@ -29,23 +29,21 @@ public class SpecsServiceImpl implements SpecsService{
 
     @Override
     public List<Specs> getAllSpecs() {
-        List<SpecsEntity> specsEntities
-                = specsRepository.findAll();
+        List<SpecsEntity> specsEntities = specsRepository.findAll();
 
         List<Specs> specs = specsEntities
                 .stream()
                 .map(specsEntity -> new Specs(
                         specsEntity.getSpecsID(),
-                        specsEntity.getDescription()
-                ))
+                        specsEntity.getCategoryID(),
+                        specsEntity.getDescription()))
                 .collect(Collectors.toList());
         return specs;
     }
 
     @Override
     public Specs getSpecsById(Integer specsID) {
-        SpecsEntity specsEntity
-                = specsRepository.findById(specsID).get();
+        SpecsEntity specsEntity = specsRepository.findById(specsID).get();
         Specs specs = new Specs();
         BeanUtils.copyProperties(specsEntity, specs);
         return specs;
@@ -53,15 +51,14 @@ public class SpecsServiceImpl implements SpecsService{
 
     @Override
     public boolean deletedSpecs(Integer specsID) {
-        SpecsEntity specs =  specsRepository.findById(specsID).get();
+        SpecsEntity specs = specsRepository.findById(specsID).get();
         specsRepository.delete(specs);
         return true;
     }
 
     @Override
     public Specs updateSpecs(Integer specsID, Specs specs) {
-        SpecsEntity specsEntity =
-                specsRepository.findById(specsID).get();
+        SpecsEntity specsEntity = specsRepository.findById(specsID).get();
         specsEntity.setDescription(specs.getDescription());
 
         specsRepository.save(specsEntity);
@@ -69,5 +66,3 @@ public class SpecsServiceImpl implements SpecsService{
     }
 
 }
-
-
