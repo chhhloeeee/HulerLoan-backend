@@ -40,7 +40,8 @@ public class LoanServiceImpl implements LoanService {
                         loanEntity.getIssuedate(),
                         loanEntity.getReturndate(),
                         loanEntity.getDayselapsed(),
-                        loanEntity.getActive()))
+                        loanEntity.getActive(),
+                        loanEntity.getEquipmentAvailable()))
                 .collect(Collectors.toList());
         return loan;
     }

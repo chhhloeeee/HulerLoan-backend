@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name = "loan")
@@ -19,6 +21,17 @@ public class LoanEntity {
     private String returndate;
     private Integer dayselapsed;
     private Boolean active;
+    @OneToOne()
+    @JoinColumn(name = "equipmentID", referencedColumnName = "equipmentID", insertable = false, updatable = false)
+    private EquipmentEntity equipment;
+
+    public EquipmentEntity getAvailability() {
+        return this.equipment;
+    }
+
+    public Integer getEquipmentAvailable() {
+        return this.equipment.getAvailability();
+    }
 
     public LoanEntity(Integer loanID, Integer userID, Integer equipmentID, String issuedate, String returndate,
             Integer dayselapsed, Boolean active) {

@@ -8,6 +8,7 @@ public class Loan {
     private String returndate;
     private Integer dayselapsed;
     private Boolean active;
+    private Integer equipmentAvaiable;
 
     public Integer getLoanID() {
         return loanID;
@@ -65,8 +66,16 @@ public class Loan {
         this.active = active;
     }
 
+    public Integer getEquipmentAvailable() {
+        return equipmentAvaiable;
+    }
+
+    public void setEquipmentAvailable(Integer equipmentAvailable) {
+        this.equipmentAvaiable = equipmentAvailable;
+    }
+
     public Loan(Integer loanID, Integer userID, Integer equipmentID, String issuedate, String returndate,
-            Integer dayselapsed, Boolean active) {
+            Integer dayselapsed, Boolean active, Integer equipmentAvailable) {
         this.loanID = loanID;
         this.userID = userID;
         this.equipmentID = equipmentID;
@@ -74,6 +83,7 @@ public class Loan {
         this.returndate = returndate;
         this.dayselapsed = dayselapsed;
         this.active = active;
+        this.equipmentAvaiable = equipmentAvailable;
     }
 
     public Loan() {
