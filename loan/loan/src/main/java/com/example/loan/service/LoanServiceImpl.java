@@ -37,9 +37,9 @@ public class LoanServiceImpl implements LoanService {
                         loanEntity.getLoanID(),
                         loanEntity.getUserID(),
                         loanEntity.getEquipmentID(),
-                        loanEntity.getIssueDate(),
-                        loanEntity.getReturnDate(),
-                        loanEntity.getDaysElapsed(),
+                        loanEntity.getIssuedate(),
+                        loanEntity.getReturndate(),
+                        loanEntity.getDayselapsed(),
                         loanEntity.getActive()))
                 .collect(Collectors.toList());
         return loan;
@@ -66,9 +66,9 @@ public class LoanServiceImpl implements LoanService {
         loanEntity.setUserID(loan.getUserID());
         loanEntity.setEquipmentID(loan.getEquipmentID());
         loanEntity.setActive(loan.getActive());
-        loanEntity.setDaysElapsed(loan.getDaysElapsed());
-        loanEntity.setIssueDate(loan.getIssueDate());
-        loanEntity.setReturnDate(loan.getReturnDate());
+        loanEntity.setDayselapsed(loan.getDayselapsed());
+        loanEntity.setIssuedate(loan.getIssuedate());
+        loanEntity.setReturndate(loan.getReturndate());
 
         loanRepository.save(loanEntity);
         return loan;

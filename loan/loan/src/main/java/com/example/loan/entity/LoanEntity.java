@@ -17,19 +17,19 @@ public class LoanEntity {
     private Integer loanID;
     private Integer userID;
     private Integer equipmentID;
-    private Date issueDate;
-    private Date returnDate;
-    private Integer daysElapsed;
+    private Date issuedate;
+    private Date returndate;
+    private Integer dayselapsed;
     private Boolean active;
 
-    public LoanEntity(Integer loanID, Integer userID, Integer equipmentID, Date issueDate, Date returnDate,
-            Integer daysElapsed, Boolean active) {
+    public LoanEntity(Integer loanID, Integer userID, Integer equipmentID, Date issuedate, Date returndate,
+            Integer dayselapsed, Boolean active) {
         this.loanID = loanID;
         this.userID = userID;
         this.equipmentID = equipmentID;
-        this.issueDate = issueDate;
-        this.returnDate = returnDate;
-        this.daysElapsed = daysElapsed;
+        this.issuedate = issuedate;
+        this.returndate = returndate;
+        this.dayselapsed = dayselapsed;
         this.active = active;
     }
 
@@ -60,28 +60,28 @@ public class LoanEntity {
         this.equipmentID = equipmentID;
     }
 
-    public Date getIssueDate() {
-        return issueDate;
+    public Date getIssuedate() {
+        return issuedate;
     }
 
-    public void setIssueDate(Date issueDate) {
-        this.issueDate = issueDate;
+    public void setIssuedate(Date issuedate) {
+        this.issuedate = issuedate;
     }
 
-    public Date getReturnDate() {
-        return returnDate;
+    public Date getReturndate() {
+        return returndate;
     }
 
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    public void setReturndate(Date returndate) {
+        this.returndate = returndate;
     }
 
-    public Integer getDaysElapsed() {
-        return daysElapsed;
+    public Integer getDayselapsed() {
+        return dayselapsed;
     }
 
-    public void setDaysElapsed(Integer daysElapsed) {
-        this.daysElapsed = daysElapsed;
+    public void setDayselapsed(Integer dayselapsed) {
+        this.dayselapsed = dayselapsed;
     }
 
     public Boolean getActive() {
