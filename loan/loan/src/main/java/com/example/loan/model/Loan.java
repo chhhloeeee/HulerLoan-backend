@@ -1,7 +1,5 @@
 package com.example.loan.model;
 
-import java.sql.Date;
-
 public class Loan {
     private Integer loanID;
     private Integer userID;
