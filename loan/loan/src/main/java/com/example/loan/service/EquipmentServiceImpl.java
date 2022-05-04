@@ -15,7 +15,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     private EquipmentRepository equipmentRepository;
 
-    public EquipmentServiceImpl(EquipmentRepository equipmentRepository){
+    public EquipmentServiceImpl(EquipmentRepository equipmentRepository) {
         this.equipmentRepository = equipmentRepository;
     }
 
@@ -28,30 +28,28 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
     @Override
-    public List<Equipment> getAllEquipment(){
-        List<EquipmentEntity> equipmentEntities
-            = equipmentRepository.findAll();
+    public List<Equipment> getAllEquipment() {
+        List<EquipmentEntity> equipmentEntities = equipmentRepository.findAll();
 
-            List<Equipment> equipment = equipmentEntities
+        List<Equipment> equipment = equipmentEntities
                 .stream()
                 .map(equipmentEntity -> new Equipment(
-                    equipmentEntity.getEquipmentID(),
-                    equipmentEntity.getCategoryID(),
-                    equipmentEntity.getSpecsID(),
-                    equipmentEntity.getAvailability(),
-                    equipmentEntity.getCategoryName(),
-                    equipmentEntity.getSpecsDescription()
-                ))
+                        equipmentEntity.getEquipmentID(),
+                        equipmentEntity.getCategoryID(),
+                        equipmentEntity.getSpecsID(),
+                        equipmentEntity.getAvailability(),
+                        equipmentEntity.getCategoryName(),
+                        equipmentEntity.getSpecsDescription(),
+                        equipmentEntity.getOnloan()))
                 .collect(Collectors.toList());
         return equipment;
     }
 
     @Override
     public Equipment getEquipmentById(Integer equipmentID) {
-        EquipmentEntity equipmentEntity
-            = equipmentRepository.findById(equipmentID).get();
-            Equipment equipment = new Equipment();
-            BeanUtils.copyProperties(equipmentEntity, equipment);
+        EquipmentEntity equipmentEntity = equipmentRepository.findById(equipmentID).get();
+        Equipment equipment = new Equipment();
+        BeanUtils.copyProperties(equipmentEntity, equipment);
         return equipment;
     }
 
@@ -64,8 +62,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     public Equipment updateEquipment(Integer equipmentID, Equipment equipment) {
-        EquipmentEntity equipmentEntity = 
-                equipmentRepository.findById(equipmentID).get();
+        EquipmentEntity equipmentEntity = equipmentRepository.findById(equipmentID).get();
         equipmentEntity.setCategoryID(equipment.getCategoryID());
         equipmentEntity.setSpecsID(equipment.getSpecsID());
         equipmentEntity.setAvailability(equipment.getAvailability());
@@ -73,5 +70,5 @@ public class EquipmentServiceImpl implements EquipmentService {
         equipmentRepository.save(equipmentEntity);
         return equipment;
     }
-    
+
 }

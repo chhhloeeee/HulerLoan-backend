@@ -11,67 +11,88 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "equipment")
 public class EquipmentEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer equipmentID;
     private Integer categoryID;
     private Integer specsID;
     private Integer availability;
+    private Integer onloan;
     @OneToOne()
-        @JoinColumn(name="categoryID", referencedColumnName = "categoryID", insertable = false, updatable = false)   
+    @JoinColumn(name = "categoryID", referencedColumnName = "categoryID", insertable = false, updatable = false)
     private CategoryEntity category;
     @OneToOne()
-        @JoinColumn(name="specsID", referencedColumnName = "specsID", insertable = false, updatable = false)
-        private SpecsEntity specs;
+    @JoinColumn(name = "specsID", referencedColumnName = "specsID", insertable = false, updatable = false)
+    private SpecsEntity specs;
 
-    public CategoryEntity getCategory(){
+    public CategoryEntity getCategory() {
         return this.category;
     }
-    public String getCategoryName(){
+
+    public String getCategoryName() {
         return this.category.getName();
     }
-    public SpecsEntity getSpecs(){
+
+    public SpecsEntity getSpecs() {
         return this.specs;
     }
-    public String getSpecsDescription(){
+
+    public String getSpecsDescription() {
         return this.specs.getDescription();
     }
 
-    public EquipmentEntity(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability) {
+    public EquipmentEntity(Integer equipmentID, Integer categoryID, Integer specsID, Integer availability,
+            Integer onloan) {
         this.equipmentID = equipmentID;
         this.categoryID = categoryID;
         this.specsID = specsID;
         this.availability = availability;
-    
+        this.onloan = onloan;
+
     }
+
     public EquipmentEntity() {
     }
 
     public Integer getEquipmentID() {
         return equipmentID;
     }
+
     public void setEquipmentID(Integer equipmentID) {
         this.equipmentID = equipmentID;
     }
+
     public Integer getCategoryID() {
         return categoryID;
     }
+
     public void setCategoryID(Integer categoryID) {
         this.categoryID = categoryID;
     }
+
     public Integer getSpecsID() {
         return specsID;
     }
+
     public void setSpecsID(Integer specsID) {
         this.specsID = specsID;
     }
+
     public Integer getAvailability() {
         return availability;
     }
+
     public void setAvailability(Integer availability) {
         this.availability = availability;
     }
 
-    
+    public Integer getOnloan() {
+        return onloan;
+    }
+
+    public void setOnloan(Integer onloan) {
+        this.onloan = onloan;
+    }
+
 }

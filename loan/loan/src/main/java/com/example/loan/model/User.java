@@ -6,6 +6,7 @@ public class User {
     private String password;
     private Boolean admin;
     private String email;
+    private Boolean loggedIn;
 
     public Integer getUserID() {
         return userID;
@@ -38,6 +39,7 @@ public class User {
     public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
+
     public String getEmail() {
         return email;
     }
@@ -46,14 +48,24 @@ public class User {
         this.email = email;
     }
 
-    public User(Integer userID, String name, String password,boolean admin, String email) {
+    public Boolean getLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public User(Integer userID, String name, String password, boolean admin, String email) {
         this.userID = userID;
         this.name = name;
         this.password = password;
         this.admin = admin;
         this.email = email;
+        this.loggedIn = false;
     }
 
     public User() {
     }
+
 }
