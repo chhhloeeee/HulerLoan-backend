@@ -68,18 +68,17 @@ public class UserController {
 
     @CrossOrigin()
     @PostMapping("/users/login")
-    public Status loginUser(@Valid @RequestBody User user) {
+    public ResponseEntity<User> loginUser(@Valid @RequestBody User user) {
         List<User> users = userService.getAllUsers();
 
         for (User other : users) {
             if (other.equals(user)) {
                 user.setLoggedIn(true);
                 userService.saveUser(user);
-                return Status.SUCCESS;
+                return ResponseEntity.ok(user);
             }
         }
-
-        return Status.FAILURE;
+        return ResponseEntity.ok(user);
     }
 
     @CrossOrigin()
