@@ -4,7 +4,7 @@ import com.example.loan.model.User;
 import com.example.loan.service.UserService;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,16 +55,11 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/user/login")
-    public ResponseEntity<User> getUser(@AuthenticationPrincipal String username) {
-
-        User user = new User();
-        user.setUserID(user.getUserID());
-        user.setName(user.getName());
-        user.setPassword(user.getPassword());
-        user.setEmail(user.getUsername());
-
+    @GetMapping("/users/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username)
+            throws UsernameNotFoundException {
+        User user = null;
+        user = userService.getUserByUsername(username);
         return ResponseEntity.ok(user);
     }
-
 }

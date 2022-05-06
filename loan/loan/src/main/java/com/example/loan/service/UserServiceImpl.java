@@ -71,4 +71,12 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public User getUserByUsername(String username) {
+        UserEntity userEntity = userRepository.findByUsername(username).get();
+        User user = new User();
+        BeanUtils.copyProperties(userEntity, user);
+        return user;
+    }
+
 }
