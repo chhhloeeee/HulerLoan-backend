@@ -19,10 +19,10 @@ public class CustomUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
 
-        UserEntity userEntity = userRepository.findByUserName(username);
+        UserEntity userEntity = userRepository.findByUsername(username);
 
         if (null == userEntity) {
-            throw new UsernameNotFoundException("User Not Found with userName " + username);
+            throw new UsernameNotFoundException("User Not Found with username " + username);
         }
         return userEntity;
     }
