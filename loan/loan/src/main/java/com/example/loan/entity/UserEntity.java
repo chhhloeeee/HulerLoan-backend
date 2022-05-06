@@ -1,47 +1,23 @@
 package com.example.loan.entity;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.example.loan.UserRole;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 @Entity
 @Table(name = "users")
-public class UserEntity implements UserDetails {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userID;
     private String name;
     private String password;
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    private Boolean admin;
     private String email;
     private String username;
-
-    public UserEntity(Integer userID, String name, String password, UserRole userRole, String email, String username) {
-        this.userID = userID;
-        this.name = name;
-        this.password = password;
-        this.userRole = userRole;
-        this.email = email;
-        this.username = username;
-    }
-
-    public UserEntity() {
-    }
 
     public Integer getUserID() {
         return userID;
@@ -67,12 +43,12 @@ public class UserEntity implements UserDetails {
         this.password = password;
     }
 
-    public UserRole getUserRole() {
-        return userRole;
+    public Boolean getAdmin() {
+        return admin;
     }
 
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 
     public String getEmail() {
@@ -91,30 +67,16 @@ public class UserEntity implements UserDetails {
         this.username = username;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public UserEntity(Integer userID, String name, String password, Boolean admin, String email, String username) {
+        this.userID = userID;
+        this.name = name;
+        this.password = password;
+        this.admin = admin;
+        this.email = email;
+        this.username = username;
     }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
-        return Collections.singletonList(authority);
+    public UserEntity() {
     }
 
 }

@@ -15,5 +15,4 @@ public interface UserService {
 
     boolean deletedUser(Integer userID);
 
-    User getUserByUsername(String username);
 }

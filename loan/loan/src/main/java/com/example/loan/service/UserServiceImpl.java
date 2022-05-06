@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
                         userEntity.getUserID(),
                         userEntity.getName(),
                         userEntity.getPassword(),
-                        userEntity.getUserRole(),
+                        userEntity.getAdmin(),
                         userEntity.getEmail(),
                         userEntity.getUsername()))
                 .collect(Collectors.toList());
@@ -68,14 +68,6 @@ public class UserServiceImpl implements UserService {
         userEntity.setPassword(user.getPassword());
 
         userRepository.save(userEntity);
-        return user;
-    }
-
-    @Override
-    public User getUserByUsername(String username) {
-        UserEntity userEntity = userRepository.findByUsername(username).get();
-        User user = new User();
-        BeanUtils.copyProperties(userEntity, user);
         return user;
     }
 
