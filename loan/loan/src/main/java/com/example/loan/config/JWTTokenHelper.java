@@ -17,7 +17,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JWTTokenHelper {
 
-    @Value("${jwt.auth.app}")
+    @Value("${spring.application.name}")
     private String appName;
 
     @Value("${jwt.auth.secret_key}")
