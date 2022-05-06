@@ -4,6 +4,7 @@ import com.example.loan.model.User;
 import com.example.loan.service.UserService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +53,18 @@ public class UserController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/user/login")
+    public ResponseEntity<User> getUser(@AuthenticationPrincipal String username) {
+
+        User user = new User();
+        user.setUserID(user.getUserID());
+        user.setName(user.getName());
+        user.setPassword(user.getPassword());
+        user.setEmail(user.getUsername());
+
+        return ResponseEntity.ok(user);
     }
 
 }
