@@ -3,6 +3,7 @@ package com.example.loan.controller;
 import com.example.loan.model.Loan;
 import com.example.loan.service.LoanService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +33,17 @@ public class LoanController {
     }
 
     @PostMapping("/loan")
-    public Loan saveLoan(@RequestBody Loan loan) {
-        return loanService.saveLoan(loan);
+    public Loan saveLoan(@RequestBody Loan loan) throws Exception {
+        Loan l;
+        try {
+            l = loanService.saveLoan(loan);
+        } catch (Exception e) {
+            //TODO: handle exception
+            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return l;
     }
+    
 
     @GetMapping("/loan")
     public List<Loan> getAllLoan() {

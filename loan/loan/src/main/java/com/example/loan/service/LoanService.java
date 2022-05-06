@@ -5,7 +5,7 @@ import com.example.loan.model.Loan;
 import java.util.List;
 
 public interface LoanService {
-    Loan saveLoan(Loan loan);
+    Loan saveLoan(Loan loan) throws Exception;
 
     List<Loan> getAllLoan();
 
