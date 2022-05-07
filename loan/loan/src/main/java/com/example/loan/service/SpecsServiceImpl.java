@@ -35,7 +35,6 @@ public class SpecsServiceImpl implements SpecsService {
                 .stream()
                 .map(specsEntity -> new Specs(
                         specsEntity.getSpecsID(),
-                        specsEntity.getCategoryID(),
                         specsEntity.getDescription()))
                 .collect(Collectors.toList());
         return specs;
