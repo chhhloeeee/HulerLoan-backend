@@ -1,7 +1,10 @@
 package com.example.loan.service;
 
+import com.example.loan.entity.EquipmentEntity;
 import com.example.loan.entity.LoanEntity;
+
 import com.example.loan.model.Loan;
+import com.example.loan.repository.EquipmentRepository;
 import com.example.loan.repository.LoanRepository;
 
 import org.springframework.beans.BeanUtils;
@@ -14,17 +17,46 @@ import java.util.stream.Collectors;
 public class LoanServiceImpl implements LoanService {
 
     private LoanRepository loanRepository;
-
-    public LoanServiceImpl(LoanRepository loanRepository) {
+    private EquipmentRepository er;
+    
+    public LoanServiceImpl(LoanRepository loanRepository, EquipmentRepository er) {
         this.loanRepository = loanRepository;
+        this.er = er;
     }
 
     @Override
-    public Loan saveLoan(Loan loan) {
+    public Loan saveLoan(Loan loan) throws Exception {
         LoanEntity loanEntity = new LoanEntity();
         BeanUtils.copyProperties(loan, loanEntity);
+        
+        int eid = loan.getEquipmentID();
+        
+
+        EquipmentEntity equipment = er.getById(eid);
+        // 
+        if (equipment.getAvailability() <= equipment.getOnloan()){
+            // Cant lend
+            // Need to work out what to do here
+            throw new Exception("Invalid Request");
+
+          
+
+        
+
+        }else{
+            equipment.setOnloan(equipment.getOnloan() +1);
+            er.save(equipment);
+                    //Equipment e = new Equipment;
+        // Check to see if equipment is available
+        // Update Equipment avaiability 
+        
         loanRepository.save(loanEntity);
         return loan;
+    
+        }
+
+
+
     }
 
     @Override
