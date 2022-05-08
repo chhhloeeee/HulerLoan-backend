@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
@@ -29,8 +29,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getAllUsers() {
-        List<UserEntity> userEntities
-                = userRepository.findAll();
+        List<UserEntity> userEntities = userRepository.findAll();
 
         List<User> users = userEntities
                 .stream()
@@ -39,8 +38,8 @@ public class UserServiceImpl implements UserService{
                         userEntity.getName(),
                         userEntity.getPassword(),
                         userEntity.getAdmin(),
-                        userEntity.getEmail()
-                ))
+                        userEntity.getEmail(),
+                        userEntity.getUsername()))
                 .collect(Collectors.toList());
 
         return users;
@@ -48,8 +47,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUserById(Integer userID) {
-        UserEntity userEntity
-                = userRepository.findById(userID).get();
+        UserEntity userEntity = userRepository.findById(userID).get();
         User user = new User();
         BeanUtils.copyProperties(userEntity, user);
         return user;
@@ -57,15 +55,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean deletedUser(Integer userID) {
-        UserEntity user =  userRepository.findById(userID).get();
+        UserEntity user = userRepository.findById(userID).get();
         userRepository.delete(user);
         return true;
     }
 
     @Override
     public User updateUser(Integer userID, User user) {
-        UserEntity userEntity =
-                userRepository.findById(userID).get();
+        UserEntity userEntity = userRepository.findById(userID).get();
         userEntity.setEmail(user.getEmail());
         userEntity.setName(user.getName());
         userEntity.setPassword(user.getPassword());
@@ -75,5 +72,3 @@ public class UserServiceImpl implements UserService{
     }
 
 }
-
-

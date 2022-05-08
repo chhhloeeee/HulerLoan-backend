@@ -17,17 +17,7 @@ public class UserEntity {
     private String password;
     private Boolean admin;
     private String email;
-
-    public UserEntity(Integer userID, String name, String password, Boolean admin, String email) {
-        this.userID = userID;
-        this.name = name;
-        this.password = password;
-        this.admin = admin;
-        this.email = email;
-    }
-
-    public UserEntity() {
-    }
+    private String username;
 
     public Integer getUserID() {
         return userID;
@@ -67,6 +57,26 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public UserEntity(Integer userID, String name, String password, Boolean admin, String email, String username) {
+        this.userID = userID;
+        this.name = name;
+        this.password = password;
+        this.admin = admin;
+        this.email = email;
+        this.username = username;
+    }
+
+    public UserEntity() {
     }
 
 }
