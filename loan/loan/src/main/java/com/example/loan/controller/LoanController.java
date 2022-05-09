@@ -38,8 +38,8 @@ public class LoanController {
         try {
             l = loanService.saveLoan(loan);
         } catch (Exception e) {
-            //TODO: handle exception
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            
+            throw  new ResponseStatusException(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
         }
         return l;
     }
@@ -60,6 +60,8 @@ public class LoanController {
     @DeleteMapping("/loan/{loanID}")
     public ResponseEntity<Map<String, Boolean>> deleteLoan(@PathVariable("loanID") Integer loanID) {
         boolean deleted = false;
+        Loan loan = loanService.getLoanById(loanID);
+        System.out.println(loan.getEquipmentID());
         deleted = loanService.deletedLoan(loanID);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", deleted);

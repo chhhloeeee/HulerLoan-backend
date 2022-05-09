@@ -37,6 +37,7 @@ public class LoanServiceImpl implements LoanService {
         if (equipment.getAvailability() <= equipment.getOnloan()){
             // Cant lend
             // Need to work out what to do here
+            System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEp");
             throw new Exception("Invalid Request");
 
           
@@ -88,7 +89,17 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean deletedLoan(Integer loanID) {
+
+        
         LoanEntity loan = loanRepository.findById(loanID).get();
+        if (loan.getEquipmentID() != null && loan.getEquipmentID() != 0){
+            EquipmentEntity equipment = er.getById(loan.getEquipmentID());
+            equipment.setOnloan(equipment.getOnloan()-1);
+            er.save(equipment);
+    
+        }
+
+
         loanRepository.delete(loan);
         return true;
     }
