@@ -18,7 +18,7 @@ public class LoanServiceImpl implements LoanService {
 
     private LoanRepository loanRepository;
     private EquipmentRepository er;
-    
+
     public LoanServiceImpl(LoanRepository loanRepository, EquipmentRepository er) {
         this.loanRepository = loanRepository;
         this.er = er;
@@ -28,35 +28,28 @@ public class LoanServiceImpl implements LoanService {
     public Loan saveLoan(Loan loan) throws Exception {
         LoanEntity loanEntity = new LoanEntity();
         BeanUtils.copyProperties(loan, loanEntity);
-        
+
         int eid = loan.getEquipmentID();
-        
 
         EquipmentEntity equipment = er.getById(eid);
-        // 
-        if (equipment.getAvailability() <= equipment.getOnloan()){
+        //
+        if (equipment.getAvailability() <= equipment.getOnloan()) {
             // Cant lend
             // Need to work out what to do here
-            System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEp");
+            System.out.println("Unable to lend");
             throw new Exception("Invalid Request");
 
-          
-
-        
-
-        }else{
-            equipment.setOnloan(equipment.getOnloan() +1);
+        } else {
+            equipment.setOnloan(equipment.getOnloan() + 1);
             er.save(equipment);
-                    //Equipment e = new Equipment;
-        // Check to see if equipment is available
-        // Update Equipment avaiability 
-        
-        loanRepository.save(loanEntity);
-        return loan;
-    
+            // Equipment e = new Equipment;
+            // Check to see if equipment is available
+            // Update Equipment avaiability
+
+            loanRepository.save(loanEntity);
+            return loan;
+
         }
-
-
 
     }
 
@@ -90,15 +83,13 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public boolean deletedLoan(Integer loanID) {
 
-        
         LoanEntity loan = loanRepository.findById(loanID).get();
-        if (loan.getEquipmentID() != null && loan.getEquipmentID() != 0){
+        if (loan.getEquipmentID() != null && loan.getEquipmentID() != 0) {
             EquipmentEntity equipment = er.getById(loan.getEquipmentID());
-            equipment.setOnloan(equipment.getOnloan()-1);
+            equipment.setOnloan(equipment.getOnloan() - 1);
             er.save(equipment);
-    
-        }
 
+        }
 
         loanRepository.delete(loan);
         return true;
