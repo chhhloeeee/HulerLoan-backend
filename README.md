@@ -1,6 +1,6 @@
 # HulerLoan backend
 
-This app was created to manage the backend of HulerLoan system. 
+This app was created to manage the backend of the HulerLoan system. 
 
 This app is written in Java, therefore the following must be installed:
 
