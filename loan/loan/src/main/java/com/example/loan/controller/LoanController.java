@@ -38,12 +38,11 @@ public class LoanController {
         try {
             l = loanService.saveLoan(loan);
         } catch (Exception e) {
-            
-            throw  new ResponseStatusException(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
+
+            throw new ResponseStatusException(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
         }
         return l;
     }
-    
 
     @GetMapping("/loan")
     public List<Loan> getAllLoan() {
